@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import promiseMiddleware from 'redux-promise';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import './App.css';
-import UserForm from './UserForm';
+import reducers from './store/reducers';
+import UserForm from './UI/UserForm';
+import UserList from './UI/UserList';
+
+const middleware = applyMiddleware(promiseMiddleware);
 
 class App extends Component {
   render() {
     return (
-      <div className="container">
-        <UserForm />
-      </div>
+      <Provider store={createStore(reducers, composeWithDevTools(middleware))}>
+        <div className="container">
+          <UserForm />
+          <UserList />
+        </div>
+      </Provider>
     );
   }
 }
