@@ -22,11 +22,24 @@ class UserForm extends Component {
     });
   };
 
+  handleClearForm = () => {
+    this.setState({
+      formdata: {
+        firstname: '',
+        lastname: '',
+        phone: '',
+        gender: '',
+        age: '',
+      },
+    });
+  };
+
   submitForm = (e) => {
     e.preventDefault();
     this.props.dispatch(addUser({
       ...this.state.formdata,
     }));
+    this.handleClearForm();
   };
 
   render() {
