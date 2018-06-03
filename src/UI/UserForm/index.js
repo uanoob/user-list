@@ -72,7 +72,7 @@ class UserForm extends Component {
               Phone number
             </label>
             <input
-              type="phone"
+              type="text"
               className="form-control col-sm-9"
               id="form-phone"
               placeholder="Phone number"

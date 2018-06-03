@@ -1,13 +1,22 @@
 import uuidv1 from 'uuid/v1';
-import { getLocalStorage, saveToLocalStorage } from '../utils';
+import { getLocalStorage, saveToLocalStorage, sortDataFromStorage } from '../utils';
 
-import { GET_USERS, ADD_USER, DELETE_USER, CLEAR_USER } from './types';
+import { GET_USERS, SORT_USERS, ADD_USER, DELETE_USER, CLEAR_USER } from './types';
 
 export function getUsers() {
   const request = getLocalStorage('users');
   return {
     type: GET_USERS,
     payload: request,
+  };
+}
+
+export function sortUsers(field, order) {
+  const sorted = sortDataFromStorage('users', field, order);
+
+  return {
+    type: SORT_USERS,
+    payload: sorted,
   };
 }
 
