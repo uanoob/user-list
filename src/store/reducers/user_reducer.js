@@ -7,21 +7,11 @@ export default function (state = {}, action) {
     case SORT_USERS:
       return { ...state, list: action.payload };
     case ADD_USER:
-      return {
-        ...state,
-        newuser: action.payload,
-      };
+      return { ...state, list: action.payload };
     case DELETE_USER:
-      return {
-        ...state,
-        userdeleted: action.payload,
-      };
+      return { ...state, userdeleted: action.payload };
     case CLEAR_USER:
-      return {
-        ...state,
-        user: action.payload.user,
-        userdeleted: action.payload.userdeleted,
-      };
+      return { ...state, user: action.payload.user, userdeleted: action.payload.userdeleted };
     default:
       return state;
   }

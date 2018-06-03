@@ -25,10 +25,10 @@ export function addUser(user) {
     ...user,
     id: uuidv1(),
   };
-  saveToLocalStorage('users', data);
+  const list = saveToLocalStorage('users', data);
   return {
     type: ADD_USER,
-    payload: data,
+    payload: list,
   };
 }
 

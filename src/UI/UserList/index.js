@@ -9,19 +9,14 @@ class UserList extends Component {
     this.props.dispatch(getUsers());
   }
 
-  showNewUser = newuser => <UserListItem {...newuser} key={newuser.id} />;
-
   handleInput = (event, field, order) => {
     this.props.dispatch(sortUsers(field, order));
   };
-
-  // display.none className="d-none"
 
   renderItems = users =>
     (users.list ? users.list.map(item => <UserListItem {...item} key={item.id} />) : null);
 
   render() {
-    console.log(this.props.users.field);
     return (
       <div className="my-4">
         <table className="table table-bordered table-striped">
@@ -119,9 +114,6 @@ class UserList extends Component {
           </thead>
 
           <tbody>{this.renderItems(this.props.users)}</tbody>
-          <tbody>
-            {this.props.users.newuser ? this.showNewUser(this.props.users.newuser) : null}
-          </tbody>
         </table>
       </div>
     );

@@ -24,7 +24,6 @@ class UserForm extends Component {
 
   submitForm = (e) => {
     e.preventDefault();
-    // console.log(this.state.formdata);
     this.props.dispatch(addUser({
       ...this.state.formdata,
     }));
@@ -127,7 +126,7 @@ class UserForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  books: state.books,
+  users: state.users,
 });
 
 export default connect(mapStateToProps)(UserForm);
