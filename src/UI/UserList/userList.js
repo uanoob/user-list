@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './userList.css';
+
 import { getUsers, sortUsers, deleteUser } from '../../store/actions';
 import UserListItem from './userList_item';
 

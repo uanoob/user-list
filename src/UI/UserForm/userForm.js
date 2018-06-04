@@ -46,7 +46,7 @@ class UserForm extends Component {
     return (
       <div className="mx-2">
         <h4 className="text-center my-3">Registration form:</h4>
-        <form className="needs-validation" noValidate onSubmit={this.submitForm}>
+        <form className="needs-validation" onSubmit={this.submitForm}>
           <div className="form-group row">
             <label htmlFor="form-firstname" className="col-sm-3 col-form-label">
               First name

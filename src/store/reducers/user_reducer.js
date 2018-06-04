@@ -1,4 +1,4 @@
-import { GET_USERS, SORT_USERS, ADD_USER, DELETE_USER, CLEAR_USER } from '../actions/types';
+import { GET_USERS, SORT_USERS, ADD_USER, DELETE_USER } from '../actions/types';
 
 export default function (state = {}, action) {
   switch (action.type) {
@@ -10,8 +10,6 @@ export default function (state = {}, action) {
       return { ...state, list: action.payload };
     case DELETE_USER:
       return { ...state, list: action.payload };
-    case CLEAR_USER:
-      return { ...state, user: action.payload.user, userdeleted: action.payload.userdeleted };
     default:
       return state;
   }

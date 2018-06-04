@@ -1,1 +1,1 @@
-export { getUsers, sortUsers, addUser, deleteUser, clearUser } from './users';
+export { getUsers, sortUsers, addUser, deleteUser } from './users';
