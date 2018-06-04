@@ -9,7 +9,7 @@ export default function (state = {}, action) {
     case ADD_USER:
       return { ...state, list: action.payload };
     case DELETE_USER:
-      return { ...state, userdeleted: action.payload };
+      return { ...state, list: action.payload };
     case CLEAR_USER:
       return { ...state, user: action.payload.user, userdeleted: action.payload.userdeleted };
     default:

@@ -1,10 +1,10 @@
 import uuidv1 from 'uuid/v1';
-import { getLocalStorage, saveToLocalStorage, sortDataFromStorage } from '../utils';
+import { getFromLocalStorage, saveToLocalStorage, sortDataFromStorage, deleteFromLocalStorage } from '../utils';
 
 import { GET_USERS, SORT_USERS, ADD_USER, DELETE_USER, CLEAR_USER } from './types';
 
 export function getUsers() {
-  const request = getLocalStorage('users');
+  const request = getFromLocalStorage('users');
   return {
     type: GET_USERS,
     payload: request,
@@ -33,21 +33,10 @@ export function addUser(user) {
 }
 
 export const deleteUser = (id) => {
-  let request;
-  if (localStorage.getItem('users') === null) {
-    request = [];
-  } else {
-    request = JSON.parse(localStorage.getItem('users'));
-  }
-  request.forEach((user, index) => {
-    if (user.id === id) {
-      request.splice(index, 1);
-    }
-  });
-  localStorage.setItem('users', JSON.stringify(request));
+  const list = deleteFromLocalStorage('users', id);
   return {
     type: DELETE_USER,
-    payload: request,
+    payload: list,
   };
 };
 

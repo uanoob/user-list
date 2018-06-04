@@ -84,7 +84,7 @@ class UserForm extends Component {
               Phone number
             </label>
             <input
-              type="text"
+              type="number"
               className="form-control col-sm-9"
               id="form-phone"
               placeholder="Phone number"
@@ -101,14 +101,14 @@ class UserForm extends Component {
             </label>
             <select
               id="form-gender"
-              className="form-control col-sm-9"
+              className="form-control col-sm-9 custom-select"
               value={this.state.formdata.gender}
               onChange={event => this.handleInput(event, 'gender')}
               required
             >
-              <option>Choose...</option>
-              <option>female</option>
-              <option>male</option>
+              <option value="">Choose...</option>
+              <option value="female">female</option>
+              <option value="male">male</option>
             </select>
             <div className="valid-feedback">Looks good!</div>
             <div className="invalid-feedback">Please choose a gender.</div>

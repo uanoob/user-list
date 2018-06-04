@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getUsers, sortUsers } from '../../store/actions';
+import { getUsers, sortUsers, deleteUser } from '../../store/actions';
 import UserListItem from './userList_item';
 
 class UserList extends Component {
@@ -13,8 +13,17 @@ class UserList extends Component {
     this.props.dispatch(sortUsers(field, order));
   };
 
+  handleDeleteUser = (event, id) => {
+    event.preventDefault();
+    this.props.dispatch(deleteUser(id));
+  };
+
   renderItems = users =>
-    (users.list ? users.list.map(item => <UserListItem {...item} key={item.id} />) : null);
+    (users.list
+      ? users.list.map(item => (
+        <UserListItem {...item} key={item.id} handleDeleteUser={this.handleDeleteUser} />
+      ))
+      : null);
 
   render() {
     return (
