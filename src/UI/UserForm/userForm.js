@@ -14,15 +14,22 @@ class UserForm extends Component {
     },
   };
 
-  handleInput = (event, name) => {
+  handleInput = (e, name) => {
+    if (e.target.checkValidity()) {
+      e.target.classList.remove('is-invalid');
+      e.target.classList.add('is-valid');
+    } else {
+      e.target.classList.remove('is-valid');
+      e.target.classList.add('is-invalid');
+    }
     const newFormData = { ...this.state.formdata };
-    newFormData[name] = event.target.value;
+    newFormData[name] = e.target.value;
     this.setState({
       formdata: newFormData,
     });
   };
 
-  handleClearForm = () => {
+  handleClearForm = (e) => {
     this.setState({
       formdata: {
         firstname: '',
@@ -32,6 +39,9 @@ class UserForm extends Component {
         age: '',
       },
     });
+    e.target.querySelectorAll('.form-control').forEach((node) => {
+      node.classList.remove('is-valid');
+    });
   };
 
   submitForm = (e) => {
@@ -39,7 +49,7 @@ class UserForm extends Component {
     this.props.dispatch(addUser({
       ...this.state.formdata,
     }));
-    this.handleClearForm();
+    this.handleClearForm(e);
   };
 
   render() {
@@ -60,8 +70,6 @@ class UserForm extends Component {
               onChange={event => this.handleInput(event, 'firstname')}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
-            <div className="invalid-feedback">Please choose a first name.</div>
           </div>
           <div className="form-group row">
             <label htmlFor="form-lastname" className="col-sm-3 col-form-label">
@@ -76,8 +84,6 @@ class UserForm extends Component {
               onChange={event => this.handleInput(event, 'lastname')}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
-            <div className="invalid-feedback">Please choose a last name.</div>
           </div>
           <div className="form-group row">
             <label htmlFor="form-phone" className="col-sm-3 col-form-label">
@@ -92,8 +98,6 @@ class UserForm extends Component {
               onChange={event => this.handleInput(event, 'phone')}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
-            <div className="invalid-feedback">Please choose a phone number.</div>
           </div>
           <div className="form-group row">
             <label htmlFor="form-gender" className="col-sm-3 col-form-label">
@@ -110,8 +114,6 @@ class UserForm extends Component {
               <option value="female">female</option>
               <option value="male">male</option>
             </select>
-            <div className="valid-feedback">Looks good!</div>
-            <div className="invalid-feedback">Please choose a gender.</div>
           </div>
           <div className="form-group row">
             <label htmlFor="form-age" className="col-sm-3 col-form-label">
@@ -126,8 +128,6 @@ class UserForm extends Component {
               onChange={event => this.handleInput(event, 'age')}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
-            <div className="invalid-feedback">Please choose your age.</div>
           </div>
           <button className="btn btn-primary" type="submit">
             Submit form

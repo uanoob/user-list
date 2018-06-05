@@ -36,10 +36,10 @@ export function addUser(user) {
   };
 }
 
-export const deleteUser = (id) => {
+export function deleteUser(id) {
   const list = deleteFromLocalStorage('users', id);
   return {
     type: DELETE_USER,
     payload: list,
   };
-};
+}

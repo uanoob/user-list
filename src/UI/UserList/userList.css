@@ -1,4 +1,15 @@
 .fa-long-arrow-down:hover,
 .fa-long-arrow-up:hover {
+  background: rgb(33, 161, 236);
   cursor: pointer;
+}
+
+.user-list_item:hover {
+  background: rgb(220, 220, 220);
+  cursor: pointer;
+}
+
+.user-list_item:active {
+  background: rgb(246, 55, 55);
+  color: white;
 }

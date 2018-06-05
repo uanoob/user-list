@@ -11,7 +11,7 @@ class UserList extends Component {
     this.props.dispatch(getUsers());
   }
 
-  handleInput = (event, field, order) => {
+  handleSortUsers = (field, order) => {
     this.props.dispatch(sortUsers(field, order));
   };
 
@@ -20,7 +20,7 @@ class UserList extends Component {
     this.props.dispatch(deleteUser(id));
   };
 
-  renderItems = users =>
+  renderUserListItems = users =>
     (users.list
       ? users.list.map(item => (
         <UserListItem {...item} key={item.id} handleDeleteUser={this.handleDeleteUser} />
@@ -30,7 +30,7 @@ class UserList extends Component {
   render() {
     return (
       <div className="my-4">
-        <table className="table table-bordered table-striped">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <th scope="col">First name</th>
@@ -47,13 +47,15 @@ class UserList extends Component {
                     className="fa fa-long-arrow-up"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'firstname', 'up')}
+                    onKeyPress={() => this.handleSortUsers('firstname', 'up')}
+                    onClick={() => this.handleSortUsers('firstname', 'up')}
                   />
                   <i
                     className="fa fa-long-arrow-down"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'firstname', 'down')}
+                    onKeyPress={() => this.handleSortUsers('firstname', 'down')}
+                    onClick={() => this.handleSortUsers('firstname', 'down')}
                   />
                 </div>
               </th>
@@ -63,13 +65,15 @@ class UserList extends Component {
                     className="fa fa-long-arrow-up"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'lastname', 'up')}
+                    onKeyPress={() => this.handleSortUsers('lastname', 'up')}
+                    onClick={() => this.handleSortUsers('lastname', 'up')}
                   />
                   <i
                     className="fa fa-long-arrow-down"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'lastname', 'down')}
+                    onKeyPress={() => this.handleSortUsers('lastname', 'down')}
+                    onClick={() => this.handleSortUsers('lastname', 'down')}
                   />
                 </div>
               </th>
@@ -79,13 +83,15 @@ class UserList extends Component {
                     className="fa fa-long-arrow-up"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'phone', 'up')}
+                    onKeyPress={() => this.handleSortUsers('phone', 'up')}
+                    onClick={() => this.handleSortUsers('phone', 'up')}
                   />
                   <i
                     className="fa fa-long-arrow-down"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'phone', 'down')}
+                    onKeyPress={() => this.handleSortUsers('phone', 'down')}
+                    onClick={() => this.handleSortUsers('phone', 'down')}
                   />
                 </div>
               </th>
@@ -95,13 +101,15 @@ class UserList extends Component {
                     className="fa fa-long-arrow-up"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'gender', 'up')}
+                    onKeyPress={() => this.handleSortUsers('gender', 'up')}
+                    onClick={() => this.handleSortUsers('gender', 'up')}
                   />
                   <i
                     className="fa fa-long-arrow-down"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'gender', 'down')}
+                    onKeyPress={() => this.handleSortUsers('gender', 'down')}
+                    onClick={() => this.handleSortUsers('gender', 'down')}
                   />
                 </div>
               </th>
@@ -111,20 +119,22 @@ class UserList extends Component {
                     className="fa fa-long-arrow-up"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'age', 'up')}
+                    onKeyPress={() => this.handleSortUsers('age', 'up')}
+                    onClick={() => this.handleSortUsers('age', 'up')}
                   />
                   <i
                     className="fa fa-long-arrow-down"
                     role="button"
                     tabIndex="0"
-                    onClick={event => this.handleInput(event, 'age', 'down')}
+                    onKeyPress={() => this.handleSortUsers('age', 'down')}
+                    onClick={() => this.handleSortUsers('age', 'down')}
                   />
                 </div>
               </th>
             </tr>
           </thead>
 
-          <tbody>{this.renderItems(this.props.users)}</tbody>
+          <tbody>{this.renderUserListItems(this.props.users)}</tbody>
         </table>
       </div>
     );
